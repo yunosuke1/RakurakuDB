@@ -1,36 +1,32 @@
-import chromedriver_binary
-import time
-import os
-import signal
+import pytest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.action_chains import ActionChains
+from webdriver_manager.chrome import ChromeDriverManager
 
-driver = webdriver.Chrome()
+class TestGoogle:
 
-try:
-  driver.get("https://itb-hdb2.htdb.jp/ggutk9a/top/index")
-  driver.set_window_size(949, 823)
-  driver.find_element(By.ID, "loginId").send_keys("yunosuke.ide")
-  driver.find_element(By.ID, "loginPassword").send_keys("rakus@321")
-  driver.find_element(By.ID, "jq-loginSubmit").click()
-  driver.switch_to.frame(1)
+    driver = webdriver.Chrome(ChromeDriverManager().install())
 
-  driver.find_element(By.LINK_TEXT, "日報・月報").click()
-  time.sleep(1.0)
+    def setup_class(cls):
+        cls.driver = webdriver.Chrome(ChromeDriverManager().install())
+        cls.driver.maximize_window()
 
-  driver.find_element(By.LINK_TEXT, "日報管理DB").click()
-  time.sleep(1.0)
+    def setup_method(self):
+        self.driver.get("https://google.com")
 
-  element = driver.find_element(By.LINK_TEXT, "日報管理DB")
-  time.sleep(1.0)
+    def test_case(self):
+        driver = self.driver
 
-  driver.find_element(By.CSS_SELECTOR, "#menuli_101255 .fw-ovf-max").click()
-  driver.switch_to.default_content()
-  driver.switch_to.frame(2)
-  
-  driver.find_element(By.ID, "field_102279").click()
-  driver.find_element(By.ID, "field_102279").send_keys("あ")
-  driver.find_element(By.LINK_TEXT, "確定").click()
-finally:
-    os.kill(driver.service.process.pid,signal.SIGTERM)  
+        driver.save_screenshot("test-reports/result_001.png")
+
+        driver.find_element_by_css_selector("#tsf > div:nth-child(2) > div > div.RNNXgb > div > div.a4bIc > input").send_keys("hoge")
+
+        driver.save_screenshot("test-reports/result_002.png")
+
+        driver.find_element_by_css_selector("#tsf > div:nth-child(2) > div > div.FPdoLc.VlcLAe > center > input.gNO89b").click()
+
+        driver.save_screenshot("test-reports/result_003.png")
+
+        assert driver.title.count('hoge'), "ページタイトルにhogeが含まれていること"
+
+    def teardown_class(cls):
+        cls.driver.quit()

@@ -57,7 +57,7 @@ jobs:
           name: run tests
           command: |
             . venv/bin/activate
-            pytest test_nippou.py -v --junit-xml=test-results/regression/results.xml --html=test-reports/report.html --self-contained-html --alluredir=/home/circleci/repo/allure-report
+            pytest test_google.py -v --junit-xml=test-results/regression/results.xml --html=test-reports/report.html --self-contained-html --alluredir=/home/circleci/repo/allure-report
             allure generate
       - store_artifacts:
           path: test-reports/
