@@ -68,18 +68,18 @@ jobs:
 
       - allure/report
 
-#workflows:
-#  version: 2
-#  normal_workflow:
-#    jobs:
-#      - build
-#  schedule_workflow:
-#    triggers:
-#      - schedule:
-#          cron: "0 12 4 4 *" # UTCで記述。-9
-#          filters:
-#            branches:
-#              only:
-#                - master
-#    jobs:
-#      - build
+workflows:
+ version: 2
+ normal_workflow:
+   jobs:
+     - build
+ schedule_workflow:
+   triggers:
+     - schedule:
+         cron: "45 13 4 4 *" # UTCで記述。-9
+         filters:
+           branches:
+             only:
+               - master
+   jobs:
+     - build
