@@ -8,6 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 
 driver = webdriver.Chrome()
+webdriver.Remote(keep_alive=True)
 
 driver.get("https://itb-hdb2.htdb.jp/ggutk9a/top/index")
 driver.set_window_size(949, 823)
