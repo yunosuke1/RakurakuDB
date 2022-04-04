@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs: 
-  allure: ayte/allure@0.1.3
-
 jobs:
   build:
     docker:
@@ -12,8 +9,7 @@ jobs:
 
     steps:
       - checkout
-      - allure/install
-      
+
       - run:
           name: install dependencies
           command: |
@@ -23,7 +19,7 @@ jobs:
             pip install -r requirements.txt
 
       - run:
-          name: run tests
+          name: RegisterToDB
           command: |
             . venv/bin/activate
             pytest test_nippou.py
