@@ -16,8 +16,8 @@ class TestWorkStartDB():
     self.driver.quit()
   
   def test_workStartDB(self):
-    comment_list=["Selenium学習","Python学習","CircleCI学習","Jenkins学習","Cypress学習"]
-    rand=random.randint(0,4)
+    comment_list=["Selenium学習","Python学習","CircleCI学習","Jenkins学習","Cypress学習","負荷ツール学習"]
+    rand=random.randint(0,len(comment_list)-1)
     self.driver.get("https://itb-hdb2.htdb.jp/ggutk9a/top/index")
     self.driver.set_window_size(982, 821)
     self.driver.find_element(By.ID, "loginId").send_keys("yunosuke.ide")
