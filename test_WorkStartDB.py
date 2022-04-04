@@ -1,10 +1,15 @@
+from random import random
 import pytest
 import time
 import os
 import signal
+import random
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
+
+comment_list=["Selenium学習","Python学習","CircleCI学習","Jenkins学習","Cypress学習"]
+rand=random.randint(0,4)
 
 driver = webdriver.Chrome()
 driver.get("https://itb-hdb2.htdb.jp/ggutk9a/top/index")
@@ -24,4 +29,5 @@ time.sleep(1)
 driver.switch_to.default_content()
 driver.switch_to.frame(2)
 driver.find_element(By.CSS_SELECTOR, ".fw-ff-mono").click()
-driver.find_element(By.CSS_SELECTOR, ".fw-ff-mono").send_keys("Selenium")
+driver.find_element(By.CSS_SELECTOR, ".fw-ff-mono").send_keys(comment_list[rand])
+driver.find_element_by_class_name("fw-btn-ok fw-btn-icon fw-mw100").click()
