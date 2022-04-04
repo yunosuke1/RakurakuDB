@@ -1,6 +1,5 @@
 import pytest
 from webdriver_manager.chrome import ChromeDriverManager
-import chromedriver_binary
 import time
 import os
 import signal
