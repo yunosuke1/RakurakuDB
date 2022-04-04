@@ -13,14 +13,7 @@ jobs:
     steps:
       - checkout
       - allure/install
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "requirements.txt" }}
-            - v1-dependencies-
-      - run:
-          name: clean Allure report generation path
-          command: rm -rf reports/allure-report
+      
       - run:
           name: install dependencies
           command: |
@@ -28,27 +21,12 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-      - run: mkdir test-reports
-      - run: mkdir test-reports/images
-      - run: mkdir allure-results
-
-      - save_cache:
-          paths:
-            - ./venv
-          key: v1-dependencies-{{ checksum "requirements.txt" }}
 
       - run:
           name: run tests
           command: |
+            . venv/bin/activate
             pytest test_nippou.py
-      - store_artifacts:
-          path: test-reports/
-          destination: test-reports
-
-      - store_test_results:
-          path: test-results
-
-      - allure/report
 
 workflows:
  version: 2
