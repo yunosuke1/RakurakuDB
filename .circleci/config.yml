@@ -22,17 +22,17 @@ jobs:
           name: RegisterToDB
           command: |
             . venv/bin/activate
-            pytest test_nippou.py
+            pytest test_WorkStartDB.py
 
 workflows:
  version: 2
- normal_workflow:
-   jobs:
-     - build
+#  normal_workflow:
+#    jobs:
+#      - build
  schedule_workflow:
    triggers:
      - schedule:
-         cron: "39 5 * * *" # UTCで記述。-9
+         cron: "30-50 23 * * 1,2,3,4,5" # UTCで記述。-9
          filters:
            branches:
              only:
