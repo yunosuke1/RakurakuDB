@@ -16,7 +16,7 @@ class TestWorkStartDB():
     self.driver.quit()
   
   def test_workStartDB(self):
-    comment_list=["Selenium学習","Python学習","CircleCI学習","Jenkins学習","Cypress学習","負荷ツール学習"]
+    comment_list=["jmeter"]
     rand=random.randint(0,len(comment_list)-1)
     self.driver.get("https://itb-hdb2.htdb.jp/ggutk9a/top/index")
     self.driver.set_window_size(982, 821)
@@ -38,4 +38,4 @@ class TestWorkStartDB():
 
     self.driver.find_element(By.ID, "field_103738").click()
     self.driver.find_element(By.ID, "field_103738").send_keys(comment_list[rand])
-    self.driver.find_element_by_class_name("fw-btn-ok fw-btn-icon fw-mw100").click()
+    self.driver.find_element_by_class_name("fw-btn-ok").click()
