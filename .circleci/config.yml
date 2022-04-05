@@ -32,7 +32,7 @@ workflows:
  schedule_workflow:
    triggers:
      - schedule:
-         cron: "30 23 * * 1,2,3,4,5" # UTCで記述。-9
+         cron: "33 23 * * 1,2,3,4,5" # UTCで記述。-9
          filters:
            branches:
              only:
