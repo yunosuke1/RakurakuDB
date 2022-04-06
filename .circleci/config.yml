@@ -33,7 +33,7 @@ workflows:
  schedule_workflow:
    triggers:
      - schedule:
-         cron: "35 23 * * 1,2,3,4,5" # UTCで記述。-9
+         cron: "35 23 * * 1,2,3,4,5" # UTCで記述。指定時刻から-9時間。8時35分〜50分までの間に実行
          filters:
            branches:
              only:
