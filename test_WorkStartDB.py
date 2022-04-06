@@ -19,14 +19,16 @@ class TestWorkStartDB():
     self.driver.quit()
   
   def test_workStartDB(self):
+    # 休日判定
     holiday = jpholiday.is_holiday(datetime.date.today())
     if not holiday:
+      # 一言をランダムで選択
       comment_list=["Selenium学習","Python学習","CircleCI学習","Cypress学習","負荷ツール学習"]
       rand=random.randint(0,len(comment_list)-1)
       self.driver.get("https://itb-hdb2.htdb.jp/ggutk9a/top/index")
       self.driver.set_window_size(982, 821)
-      self.driver.find_element(By.ID, "loginId").send_keys("yunosuke.ide")
-      self.driver.find_element(By.ID, "loginPassword").send_keys("rakus@321")
+      self.driver.find_element(By.ID, "loginId").send_keys("ユーザ名")
+      self.driver.find_element(By.ID, "loginPassword").send_keys("パスワード")
       self.driver.find_element(By.ID, "jq-loginSubmit").click()
       
       self.driver.switch_to.frame(1)
