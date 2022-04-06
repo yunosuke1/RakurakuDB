@@ -22,6 +22,7 @@ jobs:
           name: RegisterToDB
           command: |
             . venv/bin/activate
+            sleep $(($RANDOM % 900))
             pytest test_WorkStartDB.py
 
 workflows:
@@ -32,7 +33,7 @@ workflows:
  schedule_workflow:
    triggers:
      - schedule:
-         cron: "33 23 * * 1,2,3,4,5" # UTCで記述。-9
+         cron: "35 23 * * 1,2,3,4,5" # UTCで記述。-9
          filters:
            branches:
              only:
