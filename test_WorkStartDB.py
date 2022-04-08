@@ -31,7 +31,7 @@ class TestWorkStartDB():
       self.driver.find_element(By.ID, "loginPassword").send_keys("パスワード")
       self.driver.find_element(By.ID, "jq-loginSubmit").click()
       
-      self.driver.switch_to.frame(1)
+      self.driver.switch_to.frame(self.driver.find_element(By.ID, "side"))
       time.sleep(1.0)
       self.driver.find_element(By.CSS_SELECTOR, "#nav-dbg-100026 .fw-ovf-max").click()
       time.sleep(1.0)
@@ -41,7 +41,7 @@ class TestWorkStartDB():
       time.sleep(1.0)
 
       self.driver.switch_to.default_content()
-      self.driver.switch_to.frame(2)
+      self.driver.switch_to.frame(self.driver.find_element(By.ID, "main"))
 
       self.driver.find_element(By.ID, "field_103738").click()
       self.driver.find_element(By.ID, "field_103738").send_keys(comment_list[rand])
