@@ -25,6 +25,7 @@ jobs:
             . venv/bin/activate
             sleep $(($RANDOM % 900))
             pytest test_WorkStartDB.py
+          no_output_timeout: 30m
 
 workflows:
  version: 2
