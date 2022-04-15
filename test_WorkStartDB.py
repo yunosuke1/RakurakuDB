@@ -31,6 +31,7 @@ class TestWorkStartDB():
       self.driver.find_element(By.ID, "loginPassword").send_keys("パスワード")
       self.driver.find_element(By.ID, "jq-loginSubmit").click()
       
+      time.sleep(1.0)
       self.driver.switch_to.frame(self.driver.find_element(By.ID, "side"))
       time.sleep(1.0)
       self.driver.find_element(By.CSS_SELECTOR, "#nav-dbg-100026 .fw-ovf-max").click()
